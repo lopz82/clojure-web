@@ -34,6 +34,6 @@
 
 (re-frame/reg-event-db
   :add-participant
-  (fn [db _]
-    (assoc db :participants (inc (:participants db)))))
+  (fn [db [_ new-participant]]
+    (update-in db :participants conj new-participant)))
 

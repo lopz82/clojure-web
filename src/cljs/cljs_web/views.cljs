@@ -31,11 +31,14 @@
 
 (defn fields-participants
   []
-  (let [n @(re-frame/subscribe [:participants])]
-    [:div (repeat n [:input {:type        "text"
-                             :style       {:border "1px solid #CCC"}
-                             :placeholder "Participant"
-                             :on-change   #(re-frame/dispatch [:add-participant])}])]))
+  (let [users @(re-frame/subscribe [:participants])
+        getvalue (fn [e] (-> e .target .-value))
+        emit (fn [e] (re-frame/dispatch [:add-participant (getvalue e)]))]
+    [:div (repeat (+ 2 (count users)) [:input {:type        "text"
+                                               :style       {:border "1px solid #CCC"}
+                                               :placeholder "Participant"
+                                               :on-change   emit}])]))
+
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
