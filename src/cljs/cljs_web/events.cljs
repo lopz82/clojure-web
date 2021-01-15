@@ -16,26 +16,7 @@
 
 (re-frame/reg-event-db
   :initialize
-  (fn [_ _]
-    {:time          (js/Date.)
-     :time-color    "red"
-     :button-clicks 0
-     :participants  2}))
-
-(re-frame/reg-event-db
-  :time-color-change
-  (fn [db [_ new-color-value]]
-    (assoc db :time-color new-color-value)))
-
-(re-frame/reg-event-db
-  :click-button
-  (fn [db _]
-    (assoc db :button-clicks (inc (:button-clicks db)))))
-
-(re-frame/reg-event-db
-  :add-participant
-  (fn [db [_ new-participant]]
-    (update-in db :participants conj new-participant)))
+  (fn [_ _]))
 
 (re-frame/reg-event-db
   :upsert-participant
