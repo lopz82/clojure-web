@@ -2,7 +2,6 @@
 
 (def default-db
   {:name "re-frame"
-   :button-clicks 0
    :participants (sorted-map)})
 
 
