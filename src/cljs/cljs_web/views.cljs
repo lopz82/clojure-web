@@ -12,9 +12,7 @@
               :id          (str "participant-" (inc id))
               :style       {:border "1px solid #CCC"}
               :placeholder (str "Participant " (inc id))
-              :on-change   emit}]
-     (str "participant-" id)
-     (str id "-" @(re-frame/subscribe [:get-participants]))]))
+              :on-change   emit}]]))
 
 (defn fields-participants
   []
@@ -37,6 +35,7 @@
 
 (defn main-panel []
     [:div
+     (str @(re-frame/subscribe [:get-participants]))
      [fields-participants]
      [participants-list]
      [pairs-list]])
