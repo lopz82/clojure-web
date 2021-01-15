@@ -9,24 +9,24 @@
         emit (fn [e] (re-frame/dispatch [:upsert-participant id (get-value e)]))]
     [:div
      [:input {:type        "text"
-              :id          (str "participant-" id)
+              :id          (str "participant-" (inc id))
               :style       {:border "1px solid #CCC"}
-              :placeholder (str "Participant " id)
+              :placeholder (str "Participant " (inc id))
               :on-change   emit}]
      (str "participant-" id)
-     (str id "-" (keyword id) @(re-frame/subscribe [:get-participants]))]))
+     (str id "-" @(re-frame/subscribe [:get-participants]))]))
 
 (defn fields-participants
   []
   (let [participants @(re-frame/subscribe [:num-fields])]
     [:div
-     (for [id (range 1 (inc participants))]
+     (for [id (range participants)]
        ^{:key id} [field id])]))
 
 (defn participants-list
   []
   [:ul
-   (for [n (vals @(re-frame/subscribe [:get-participants]))]
+   (for [n @(re-frame/subscribe [:get-participants])]
      [:li n])])
 
 (defn pairs-list
