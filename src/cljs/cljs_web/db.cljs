@@ -3,6 +3,6 @@
 (def default-db
   {:name "re-frame"
    :button-clicks 0
-   :participants []})
+   :participants (sorted-map)})
 
 

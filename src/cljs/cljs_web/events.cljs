@@ -37,3 +37,8 @@
   (fn [db [_ new-participant]]
     (update-in db :participants conj new-participant)))
 
+(re-frame/reg-event-db
+  :upsert-participant
+  [re-frame/debug]
+  (fn [db [_ id val]]
+    (update-in db [:participants] assoc (keyword (str id)) val)))
