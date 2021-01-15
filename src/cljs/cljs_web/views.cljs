@@ -20,7 +20,7 @@
   []
   (let [participants @(re-frame/subscribe [:num-fields])]
     [:div
-     (for [id (range participants)]
+     (for [id (range 1 (inc participants))]
        ^{:key id} [field id])]))
 
 (defn participants-list
