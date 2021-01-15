@@ -15,7 +15,7 @@
   (fn [participants _]
     (max 2
          (->> participants
-              (filter #(not (str/blank? (second %))))
+              (filter #(not (str/blank? %)))
               (count)
               (inc)))))
 
@@ -23,4 +23,4 @@
   :get-pairs
   :<- [:get-participants]
   (fn [participants _]
-    (calc/assign (vals participants))))
+    (calc/assign participants)))

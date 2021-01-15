@@ -22,4 +22,4 @@
   :upsert-participant
   [re-frame/debug]
   (fn [db [_ id val]]
-    (update-in db [:participants] assoc (keyword (str id)) val)))
+    (update-in db [:participants] assoc id val)))
