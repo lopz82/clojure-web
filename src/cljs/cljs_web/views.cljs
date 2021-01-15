@@ -29,7 +29,14 @@
    (for [n (vals @(re-frame/subscribe [:get-participants]))]
      [:li n])])
 
+(defn pairs-list
+  []
+  [:ul
+   (for [[x y] @(re-frame/subscribe [:get-pairs])]
+     [:li (str x " --> " y)])])
+
 (defn main-panel []
     [:div
      [fields-participants]
-     [participants-list]])
+     [participants-list]
+     [pairs-list]])

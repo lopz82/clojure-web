@@ -23,4 +23,4 @@
   :get-pairs
   :<- [:get-participants]
   (fn [participants _]
-    (calc/assign (val participants))))
+    (calc/assign (vals participants))))
