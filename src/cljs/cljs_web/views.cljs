@@ -30,7 +30,6 @@
      [:li n])])
 
 (defn main-panel []
-  (let [name (re-frame/subscribe [::subs/name])]
     [:div
      [fields-participants]
-     [participants-list]]))
+     [participants-list]])
