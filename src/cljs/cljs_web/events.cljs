@@ -20,6 +20,10 @@
 
 (re-frame/reg-event-db
   :upsert-participant
-  [re-frame/debug]
   (fn [db [_ id val]]
     (update-in db [:participants] assoc id (clojure.string/trim val))))
+
+(re-frame/reg-event-db
+  :upsert-email
+  (fn [db [_ id val]]
+    (update-in db [:emails] assoc id (clojure.string/trim val))))

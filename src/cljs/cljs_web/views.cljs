@@ -14,12 +14,23 @@
               :placeholder (str "Participant " (inc id))
               :on-change   emit}]]))
 
+(defn email
+  [id]
+  (let [get-value (fn [e] (-> e .-target .-value))
+        emit (fn [e] (re-frame/dispatch [:upsert-email id (get-value e)]))]
+    [:div
+     [:input {:type        "text"
+              :id          (str "email-" (inc id))
+              :style       {:border "1px solid #CCC"}
+              :placeholder (str "Email " (inc id))
+              :on-change   emit}]]))
+
 (defn fields-participants
   []
   (let [participants @(re-frame/subscribe [:num-fields])]
     [:div
      (for [id (range participants)]
-       ^{:key id} [field id])]))
+       ^{:key id} [:div [field id] [email id]])]))
 
 (defn participants-list
   []
@@ -36,6 +47,7 @@
 (defn main-panel []
     [:div
      (str @(re-frame/subscribe [:get-participants]))
+     (str @(re-frame/subscribe [:get-emails]))
      [fields-participants]
      [participants-list]
      [pairs-list]])

@@ -1,7 +1,8 @@
 (ns cljs-web.db)
 
 (def default-db
-  {:name "re-frame"
-   :participants (vector)})
+  {:name         "re-frame"
+   :participants (vector)
+   :emails       (vector)})
 
 
