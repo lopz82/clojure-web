@@ -19,9 +19,11 @@
   (let [get-value (fn [e] (-> e .-target .-value))
         emit (fn [e] (re-frame/dispatch [:upsert-email id (get-value e)]))]
     [:div
-     [:input {:type        "text"
+     [:input {:type        "email"
+              :required    true
               :id          (str "email-" (inc id))
-              :style       {:border "1px solid #CCC"}
+              :size        30
+              :style       {:border (str "1px solid #CCC")}
               :placeholder (str "Email " (inc id))
               :on-change   emit}]]))
 
@@ -45,9 +47,9 @@
      [:li (str x " --> " y)])])
 
 (defn main-panel []
-    [:div
-     (str @(re-frame/subscribe [:get-participants]))
-     (str @(re-frame/subscribe [:get-emails]))
-     [fields-participants]
-     [participants-list]
-     [pairs-list]])
+  [:div
+   (str @(re-frame/subscribe [:get-participants]))
+   (str @(re-frame/subscribe [:get-emails]))
+   [fields-participants]
+   [participants-list]
+   [pairs-list]])
