@@ -27,3 +27,10 @@
   :upsert-email
   (fn [db [_ id val]]
     (update-in db [:emails] assoc id (clojure.string/trim val))))
+
+(re-frame/reg-event-db
+  :calculate-pairs
+  (fn [db _]
+    (->> (:participants db)
+         (cljs-web.calc/assign)
+         (update-in db [:pairs] merge))))

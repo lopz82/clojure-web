@@ -37,7 +37,7 @@
 (defn send-button
   []
   [:button {:type "button"
-            :on-click (re-frame/dispatch :calculate-pairs)} "Send"])
+            :on-click #(re-frame/dispatch [:calculate-pairs])} "Send"])
 
 (defn participants-list
   []
@@ -55,6 +55,7 @@
   [:div
    (str @(re-frame/subscribe [:get-participants]))
    (str @(re-frame/subscribe [:get-emails]))
+   (str @(re-frame/subscribe [:get-pairs]))
    [fields-participants]
    [send-button]
    [participants-list]

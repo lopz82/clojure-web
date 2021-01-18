@@ -3,6 +3,7 @@
 (def default-db
   {:name         "re-frame"
    :participants (vector)
-   :emails       (vector)})
+   :emails       (vector)
+   :pairs        (hash-map)})
 
 

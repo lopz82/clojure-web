@@ -26,6 +26,5 @@
 
 (re-frame/reg-sub
   :get-pairs
-  :<- [:get-participants]
-  (fn [participants _]
-    (calc/assign participants)))
+  (fn [db _]
+    (:pairs db)))
