@@ -10,6 +10,11 @@
     (:participants db)))
 
 (re-frame/reg-sub
+  :get-emails
+  (fn [db _]
+    (:emails db)))
+
+(re-frame/reg-sub
   :num-fields
   :<- [:get-participants]
   (fn [participants _]
